@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19E1839D1D6BD5DF00B91CE0 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E1839C1D6BD5DF00B91CE0 /* Launch Screen.storyboard */; };
+		19F49FE81D6AE8040087B78E /* WSBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F49FE71D6AE8040087B78E /* WSBViewController.m */; };
 		1DF914E9F0D00E5CD9BDED3A /* Pods_WSDatePicker_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E023C7A887B8CE226F96303A /* Pods_WSDatePicker_Example.framework */; };
 		21ED7D99EAA87D61C4368337 /* Pods_WSDatePicker_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0BD9F65C1787266D7881D0A /* Pods_WSDatePicker_Tests.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -38,6 +40,9 @@
 /* Begin PBXFileReference section */
 		0A24BAEED08D346AF8F7828F /* Pods-WSDatePicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WSDatePicker_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WSDatePicker_Tests/Pods-WSDatePicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		0F3D4E519C2D6B7D835AA406 /* Pods-WSDatePicker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WSDatePicker_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-WSDatePicker_Example/Pods-WSDatePicker_Example.release.xcconfig"; sourceTree = "<group>"; };
+		19E1839C1D6BD5DF00B91CE0 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		19F49FE61D6AE8040087B78E /* WSBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSBViewController.h; sourceTree = "<group>"; };
+		19F49FE71D6AE8040087B78E /* WSBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSBViewController.m; sourceTree = "<group>"; };
 		3EACF95A66D6B58E5B318E36 /* WSDatePicker.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = WSDatePicker.podspec; path = ../WSDatePicker.podspec; sourceTree = "<group>"; };
 		4425CDF88CABC8DAA948E703 /* Pods-WSDatePicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WSDatePicker_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WSDatePicker_Tests/Pods-WSDatePicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* WSDatePicker_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WSDatePicker_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +142,9 @@
 				6003F5A6195388D20070C39A /* WSViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				19F49FE61D6AE8040087B78E /* WSBViewController.h */,
+				19F49FE71D6AE8040087B78E /* WSBViewController.m */,
+				19E1839C1D6BD5DF00B91CE0 /* Launch Screen.storyboard */,
 			);
 			name = "Example for WSDatePicker";
 			path = WSDatePicker;
@@ -278,6 +286,7 @@
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				19E1839D1D6BD5DF00B91CE0 /* Launch Screen.storyboard in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,6 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* WSAppDelegate.m in Sources */,
+				19F49FE81D6AE8040087B78E /* WSBViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* WSViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
@@ -512,7 +522,6 @@
 			baseConfigurationReference = 8AA7E9F9862267E169B988FE /* Pods-WSDatePicker_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WSDatePicker/WSDatePicker-Prefix.pch";
 				INFOPLIST_FILE = "WSDatePicker/WSDatePicker-Info.plist";
@@ -528,7 +537,6 @@
 			baseConfigurationReference = 0F3D4E519C2D6B7D835AA406 /* Pods-WSDatePicker_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WSDatePicker/WSDatePicker-Prefix.pch";
 				INFOPLIST_FILE = "WSDatePicker/WSDatePicker-Info.plist";

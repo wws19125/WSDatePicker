@@ -18,19 +18,19 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+    DatePicker For iOS
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/WSDatePicker'
+  s.homepage         = 'https://github.com/wws19125/WSDatePicker'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'wang' => 'wws19125@126.com' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/WSDatePicker.git', :tag => s.version.to_s }
+  s.author           = { '王的世界' => 'wws19125@126.com' }
+  s.source           = { :git => 'https://github.com/wws19125/WSDatePicker.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '7.0'
 
-  s.source_files = 'WSDatePicker/Classes/**/*'
+  s.source_files = 'WSDatePicker/WSDatePicker/**/*'
   
   # s.resource_bundles = {
   #   'WSDatePicker' => ['WSDatePicker/Assets/*.png']
