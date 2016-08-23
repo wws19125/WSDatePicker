@@ -37,7 +37,7 @@ typedef NS_OPTIONS(NSInteger, WSDatePickerType)
 @property(nonatomic,assign) BOOL enableHistory;
 @property(nonatomic,assign) BOOL enableFurture;
 ///默认选择
-@property(nonatomic,assign) NSDate *defaultDate;
+@property(nonatomic,strong) NSDate *defaultDate;
 
 /// 已经选择的
 @property(nonatomic,assign,readonly) NSInteger selectedYear;

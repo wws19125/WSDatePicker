@@ -64,7 +64,7 @@
         self.defaultDate = [NSDate new];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if([keyPath isEqualToString:@"pickerType"])
     {
@@ -95,12 +95,12 @@
 {
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *comp = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitSecond fromDate:date];
-    selectedConValue[0] = comp.year;
-    selectedConValue[1] = comp.month;
-    selectedConValue[2] = comp.day;
-    selectedConValue[3] = comp.hour;
-    selectedConValue[4] = comp.minute;
-    selectedConValue[5] = comp.second;
+    selectedConValue[0] = (int)comp.year;
+    selectedConValue[1] = (int)comp.month;
+    selectedConValue[2] = (int)comp.day;
+    selectedConValue[3] = (int)comp.hour;
+    selectedConValue[4] = (int)comp.minute;
+    selectedConValue[5] = (int)comp.second;
 
     if(self.maxYear == 0)
     {
@@ -210,7 +210,7 @@
 ///
 - (BOOL)isLeapYear:(NSInteger)year
 {
-    if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0 )
+    if(((year % 4 == 0) && (year % 100 != 0) )|| (year % 400 == 0) )
     {
         return YES;
     }
@@ -322,10 +322,10 @@
     }
     if((1 << index) & WSDatePickerTypeYEAR)
     {
-        return [NSString stringWithFormat:@"%d",self.maxYear-row];
+        return [NSString stringWithFormat:@"%d",(int)(self.maxYear-row)];
     }else
     {
-        return [NSString stringWithFormat:@"%d",row+1];
+        return [NSString stringWithFormat:@"%d",(int)row+1];
     }
 }
 

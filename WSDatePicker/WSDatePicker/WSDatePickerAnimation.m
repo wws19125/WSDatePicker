@@ -18,8 +18,8 @@
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext
 {
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-    CGRect screenBounds = [UIScreen mainScreen].bounds;
-    CGRect finalFrame = [transitionContext finalFrameForViewController:toVC];
+    //CGRect screenBounds = [UIScreen mainScreen].bounds;
+    //CGRect finalFrame = [transitionContext finalFrameForViewController:toVC];
     UIView *mirrorView = [[transitionContext viewForKey:UITransitionContextFromViewKey] snapshotViewAfterScreenUpdates:NO];
     
     [[transitionContext viewForKey:UITransitionContextFromViewKey] setHidden:YES];

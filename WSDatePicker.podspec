@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'WSDatePicker'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of WSDatePicker.'
+  s.summary          = 'DatePicker for iOS'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-    DatePicker For iOS
+    DatePicker For iOS, You can use this freely.
                        DESC
 
   s.homepage         = 'https://github.com/wws19125/WSDatePicker'
