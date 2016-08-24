@@ -41,7 +41,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor blackColor];
     // Do any additional setup after loading the view, typically from a nib.
     UIButton *btn = [[UIButton alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [btn setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:.2]];

@@ -20,13 +20,14 @@
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     //CGRect screenBounds = [UIScreen mainScreen].bounds;
     //CGRect finalFrame = [transitionContext finalFrameForViewController:toVC];
-    UIView *mirrorView = [[transitionContext viewForKey:UITransitionContextFromViewKey] snapshotViewAfterScreenUpdates:NO];
+    UIView *mirrorView = [[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey].view snapshotViewAfterScreenUpdates:NO];
     
-    [[transitionContext viewForKey:UITransitionContextFromViewKey] setHidden:YES];
+    [[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey].view setHidden:YES];
     
     UIView *container = [transitionContext containerView];
-    [container addSubview:mirrorView];
+    //[container addSubview:mirrorView];
     [container addSubview:toVC.view];
+    [toVC.view insertSubview:mirrorView atIndex:0 ];
     
     // 4. Do animate now
     NSTimeInterval duration = [self transitionDuration:transitionContext];
@@ -40,22 +41,22 @@
         //} completion:nil];
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:YES];
-        [[transitionContext viewForKey:UITransitionContextFromViewKey] setHidden:NO];
+        [[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey].view setHidden:NO];
     }];
-//    [UIView animateWithDuration:duration
-//                          delay:0.0
-//         usingSpringWithDamping:0.6
-//          initialSpringVelocity:0.0
-//                        options:UIViewAnimationOptionCurveLinear
-//                     animations:^{
-//                         //[imgView setTransform:CGAffineTransformMakeScale(.8, .8)];
-//                         CGSize size = [UIScreen mainScreen].bounds.size;
-//                         imgView.frame = CGRectMake(size.width*0.1, size.height*0.1, size.width*0.8, size.height*0.8);
-//                         toVC.view.frame = finalFrame;
-//                     } completion:^(BOOL finished) {
-//                         // 5. Tell context that we completed.
-//                         [transitionContext completeTransition:YES];
-//                     }];
+    //    [UIView animateWithDuration:duration
+    //                          delay:0.0
+    //         usingSpringWithDamping:0.6
+    //          initialSpringVelocity:0.0
+    //                        options:UIViewAnimationOptionCurveLinear
+    //                     animations:^{
+    //                         //[imgView setTransform:CGAffineTransformMakeScale(.8, .8)];
+    //                         CGSize size = [UIScreen mainScreen].bounds.size;
+    //                         imgView.frame = CGRectMake(size.width*0.1, size.height*0.1, size.width*0.8, size.height*0.8);
+    //                         toVC.view.frame = finalFrame;
+    //                     } completion:^(BOOL finished) {
+    //                         // 5. Tell context that we completed.
+    //                         [transitionContext completeTransition:YES];
+    //                     }];
 }
 
 
