@@ -49,6 +49,8 @@ typedef NS_OPTIONS(NSInteger, WSDatePickerType)
 
 @property(nonatomic,assign,readonly) NSString *selectedDateStr;
 
+///回调方法
+///
 @property(nonatomic,copy) void (^callback)(NSInteger year,NSInteger month,NSInteger day,NSInteger hour,NSInteger Minute,NSInteger second);
 
 @end

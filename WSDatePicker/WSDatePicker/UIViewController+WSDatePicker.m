@@ -16,7 +16,13 @@
 
 - (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
 {
-    id obj = objc_getAssociatedObject(self, "WSDatePickerAnimation");
+    id obj = objc_getAssociatedObject(presented, "WSDatePickerAnimation");
+    return obj;
+}
+
+- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+{
+    id obj = objc_getAssociatedObject(dismissed, "WSDatePickerAnimation");
     return obj;
 }
 
@@ -25,7 +31,7 @@
     if(customerFlag)
     {
         WSDatePickerAnimation *ani = [WSDatePickerAnimation new];
-        objc_setAssociatedObject(self, "WSDatePickerAnimation", ani, OBJC_ASSOCIATION_RETAIN);
+        objc_setAssociatedObject(viewControllerToPresent, "WSDatePickerAnimation", ani, OBJC_ASSOCIATION_RETAIN);
         viewControllerToPresent.transitioningDelegate = self;
 //        if ([[[UIDevice currentDevice] systemVersion] floatValue]>=8.0) {
 //            
@@ -40,8 +46,8 @@
     [self presentViewController:viewControllerToPresent animated:flag completion:^(){
         if(customerFlag)
         {
-            objc_setAssociatedObject(self, "WSDatePickerAnimation", nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-            self.transitioningDelegate = nil;
+            //objc_setAssociatedObject(self, "WSDatePickerAnimation", nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            //self.transitioningDelegate = nil;
         }
         if(completion)
             completion();

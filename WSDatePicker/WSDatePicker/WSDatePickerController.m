@@ -403,10 +403,10 @@
     if(!_operationBox)
     {
         _operationBox = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWdith, 40)];
-        [_operationBox setBackgroundColor:[UIColor grayColor]];
+        [_operationBox setBackgroundColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:.75]];
         [self.dateBoard addSubview:_operationBox];
         /// btn
-        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 40)];
+        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWdith-50, 0, 50, 40)];
         [btn setTitle:@"确定" forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(btnTaped:) forControlEvents:UIControlEventTouchUpInside];

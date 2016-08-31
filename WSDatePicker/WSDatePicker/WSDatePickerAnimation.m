@@ -7,6 +7,7 @@
 //
 
 #import "WSDatePickerAnimation.h"
+#import <objc/runtime.h>
 
 @implementation WSDatePickerAnimation
 
@@ -17,46 +18,57 @@
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext
 {
+    UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    
+    /// 0 for present 1 for dismiss
+    int flag = objc_getAssociatedObject(fromVC, "WSDatePickerAnimation") == nil ? 0 : 1;
+    NSTimeInterval duration = [self transitionDuration:transitionContext];
+    
     //CGRect screenBounds = [UIScreen mainScreen].bounds;
     //CGRect finalFrame = [transitionContext finalFrameForViewController:toVC];
-    UIView *mirrorView = [[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey].view snapshotViewAfterScreenUpdates:NO];
+    if(flag == 0)
+    {
+        UIView *mirrorView = [[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey].view snapshotViewAfterScreenUpdates:NO];
     
-    [[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey].view setHidden:YES];
+        [[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey].view setHidden:YES];
     
-    UIView *container = [transitionContext containerView];
-    //[container addSubview:mirrorView];
-    [container addSubview:toVC.view];
-    [toVC.view insertSubview:mirrorView atIndex:0 ];
+        UIView *container = [transitionContext containerView];
+        //[container addSubview:mirrorView];
+        [container addSubview:toVC.view];
+        [toVC.view insertSubview:mirrorView atIndex:0 ];
     
-    // 4. Do animate now
-    NSTimeInterval duration = [self transitionDuration:transitionContext];
-    [UIView animateWithDuration:duration animations:^{
-        CGSize size = [UIScreen mainScreen].bounds.size;
-        mirrorView.frame = CGRectMake(size.width*0.1, size.height*0.1, size.width*0.8, size.height*0.8);
-        UIView *view = [toVC.view viewWithTag:1000];
-        //[UIView animateWithDuration:.5 animations:^{
-        if(view)
-            [view setFrame:CGRectMake(0, size.height - 240, size.width, 240)];
-        //} completion:nil];
-    } completion:^(BOOL finished) {
-        [transitionContext completeTransition:YES];
-        [[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey].view setHidden:NO];
-    }];
-    //    [UIView animateWithDuration:duration
-    //                          delay:0.0
-    //         usingSpringWithDamping:0.6
-    //          initialSpringVelocity:0.0
-    //                        options:UIViewAnimationOptionCurveLinear
-    //                     animations:^{
-    //                         //[imgView setTransform:CGAffineTransformMakeScale(.8, .8)];
-    //                         CGSize size = [UIScreen mainScreen].bounds.size;
-    //                         imgView.frame = CGRectMake(size.width*0.1, size.height*0.1, size.width*0.8, size.height*0.8);
-    //                         toVC.view.frame = finalFrame;
-    //                     } completion:^(BOOL finished) {
-    //                         // 5. Tell context that we completed.
-    //                         [transitionContext completeTransition:YES];
-    //                     }];
+        
+        [UIView animateWithDuration:duration animations:^{
+            CGSize size = [UIScreen mainScreen].bounds.size;
+            mirrorView.frame = CGRectMake(size.width*0.05, size.height*0.05, size.width*0.9, size.height*0.9);
+            UIView *view = [toVC.view viewWithTag:1000];
+            //[UIView animateWithDuration:.5 animations:^{
+            if(view)
+                [view setFrame:CGRectMake(0, size.height - 240, size.width, 240)];
+            //} completion:nil];
+        } completion:^(BOOL finished) {
+            [transitionContext completeTransition:YES];
+            [[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey].view setHidden:NO];
+        }];
+    }
+    else
+    {
+        UIView *mirrorView = [fromVC.view.subviews objectAtIndex:0];
+        [UIView animateWithDuration:duration animations:^{
+            CGSize size = [UIScreen mainScreen].bounds.size;
+            UIView *pick = [fromVC.view viewWithTag:1000];
+            if(pick)
+            {
+                CGRect frame = pick.frame;
+                frame.origin.y = size.height;
+                [pick setFrame:frame];
+            }
+            mirrorView.frame = [UIScreen mainScreen].bounds;
+        } completion:^(BOOL finished) {
+            [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+        }];
+    }
 }
 
 
